@@ -4,4 +4,6 @@ __pycache__
 .mha
 .nii
 .gz
-/media1/*
+bin/experiments/semantic_segmentation/mmwhs/media1/
+bin/experiments/semantic_segmentation/mmwhs/mmwhs_dataset/ct_mha/
+bin/experiments/semantic_segmentation/mmwhs/TODO/
