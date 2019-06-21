@@ -2,8 +2,8 @@
 
 from collections import OrderedDict
 import numpy as np
-import tensorflow as tf
 import utils.io.image
+import tensorflow as tf
 import tensorflow_train.utils.tensorflow_util
 from tensorflow_train.data_generator import DataGenerator
 from tensorflow_train.losses.semantic_segmentation_losses import softmax_cross_entropy_with_logits
@@ -47,7 +47,7 @@ class MainLoop(MainLoopBase):
         self.input_gaussian_sigma = 1.0
         self.label_gaussian_sigma = 1.0
 
-        self.output_folder = '/media1/experiments/mmwhs/scn_' + modality + '_' + str(cv) + '/' + self.output_folder_timestamp()
+        self.output_folder = 'media1/experiments/mmwhs/scn_' + modality + '_' + str(cv) + '/' + self.output_folder_timestamp()
 
         self.dataset = Dataset(self.image_size,
                                self.image_spacing,
@@ -61,7 +61,7 @@ class MainLoop(MainLoopBase):
 
         self.dataset_train = self.dataset.dataset_train()
         self.dataset_val = self.dataset.dataset_val()
-        self.dataset_train.get({'image_id': 'mr_train_1016'})
+        self.dataset_train.get({'image_id': 'ct_train_1001'})
         self.files_to_copy = ['main.py', 'network.py', 'dataset.py']
         self.dice_names = list(map(lambda x: 'dice_{}'.format(x), range(self.num_labels)))
         self.additional_summaries_placeholders_val = dict([(name, create_summary_placeholder(name)) for name in self.dice_names])
@@ -175,6 +175,6 @@ class MainLoop(MainLoopBase):
 if __name__ == '__main__':
     # cv 1, 2, 3 for cross validation
     # cv 0 for training on full training set and testing on test set
-    for i in [1, 2, 3, 0]:
-        loop = MainLoop('mr', i)
+    for i in [0]:
+        loop = MainLoop('ct', i)
         loop.run()

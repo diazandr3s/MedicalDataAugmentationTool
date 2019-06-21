@@ -28,11 +28,12 @@ if __name__ == '__main__':
     # TODO: set to True for CT and False for MR
     is_ct = True
     # TODO: change input folder
-    input_folder = 'TODO'
+    input_folder = './TODO/'
     output_folder = './mmwhs_dataset/ct_mha/' if is_ct else './mmwhs_dataset/mr_mha/'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     filenames = glob(input_folder + '*image.nii.gz')
+    print(filenames)
     for filename in sorted(filenames):
         basename = os.path.basename(filename)
         basename_wo_ext = basename[:basename.find('.nii.gz')]
@@ -42,7 +43,7 @@ if __name__ == '__main__':
         itk.imwrite(reoriented, output_folder + basename_wo_ext + '.mha')
 
     filenames_label = glob(input_folder + '*label.nii.gz')
-    for filename in sorted(filenames):
+    for filename in sorted(filenames_label):
         basename = os.path.basename(filename)
         basename_wo_ext = basename[:basename.find('.nii.gz')]
         print(basename_wo_ext)
