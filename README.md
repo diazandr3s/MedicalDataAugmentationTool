@@ -4,6 +4,19 @@ Some example applications are under `bin/experiments`. I will add more examples 
 As this framework is mainly used for research, some files are not well documented. However, I'm working on improving this.
 If you have problems or find any bugs, don't hesitate to send me a message.
 
+Andres' comments:
+
+
+1. Create the .nii.gz files and put them into the TODO folder. I utilised itk software to manually transform from dicom to nii.gz extension.
+2. Rmember to change the names into something as ct_test_0000_image.nii.gzz in the folder TODO. So the script reorient.py can read them. MODIFY THIS!
+3. Execute reorient.py script to create the .mha files that are used for the training
+4. Remember to modify the the ct_seg_center_rai.csv inside mmwhs_dataset/setup. Not sure how to generate the coordinates automatically.
+5. Execute main.py script
+
+
+
+
+
 ## Citation
 If you use this code for your research, please cite any of our papers.
 

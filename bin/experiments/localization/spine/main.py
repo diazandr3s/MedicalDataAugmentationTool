@@ -259,10 +259,10 @@ class MainLoop(MainLoopBase):
 if __name__ == '__main__':
     # TODO: if the loss gets 'nan', either restart the network training or reduce the learning rate
     # change networks
-    networks = ['scn', 'unet']
+    networks = ['unet']
     for network in networks:
         # cv 0, 1 for cross validation
         # cv -1 for training on full training set and testing on test set
-        for cv in [-1, 0, 1]:
+        for cv in [-1]:
             loop = MainLoop(cv, network)
             loop.run()
