@@ -1,0 +1,5 @@
+mr_test_2001_image.nii.gz,P62_image_SAX_001.nii.gz
+mr_test_2002_image.nii.gz,P73_image_SAX_001.nii.gz
+mr_test_2003_image.nii.gz,P93_image_SAX_001.nii.gz
+mr_test_2004_image.nii.gz,P100_image_SAX_001.nii.gz
+mr_test_2005_image.nii.gz,P104_image_SAX_001.nii.gz

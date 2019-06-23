@@ -26,9 +26,9 @@ def relabel(labels):
 
 if __name__ == '__main__':
     # TODO: set to True for CT and False for MR
-    is_ct = True
+    is_ct = False
     # TODO: change input folder
-    input_folder = './TODO/'
+    input_folder = './TODO_mr/'
     output_folder = './mmwhs_dataset/ct_mha/' if is_ct else './mmwhs_dataset/mr_mha/'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)

@@ -1,0 +1,13 @@
+CTA1_59121671_image.mha,ct_test_2001_image.mha
+CTA1_64777737_image.mha,ct_test_2002_image.mha
+CTA1_65756681_image.mha,ct_test_2003_image.mha
+CTA1_71581448_image.mha,ct_test_2004_image.mha
+CTA2_29763150_image.mha,ct_test_2005_image.mha
+CTA2_64940108_image.mha,ct_test_2006_image.mha
+CTA2_97068622_image.mha,ct_test_2007_image.mha
+CTA2_99424077_image.mha,ct_test_2008_image.mha
+CTA3_31250462_image.mha,ct_test_2009_image.mha
+CTA3_70899742_image.mha,ct_test_2010_image.mha
+CTA3_82429982_image.mha,ct_test_2011_image.mha
+CTA3_84130077_image.mha,ct_test_2012_image.mha
+CTA3_85240093_image.mha,ct_test_2013_image.mha

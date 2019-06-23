@@ -8,6 +8,7 @@ bin/experiments/semantic_segmentation/mmwhs/media1/
 bin/experiments/semantic_segmentation/mmwhs/mmwhs_dataset/ct_mha/
 bin/experiments/semantic_segmentation/mmwhs/mmwhs_dataset/mr_mha/
 bin/experiments/semantic_segmentation/mmwhs/TODO/
+bin/experiments/semantic_segmentation/mmwhs/TODO_mr/
 bin/experiments/semantic_segmentation/mmwhs/.ipynb_checkpoints/
 bin/experiments/semantic_segmentation/mmwhs/__pycache__/
 bin/experiments/semantic_segmentation/mmwhs/SPASM_Test_Segmentations_MRI/

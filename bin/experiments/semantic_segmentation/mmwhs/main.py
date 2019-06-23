@@ -61,7 +61,7 @@ class MainLoop(MainLoopBase):
 
         self.dataset_train = self.dataset.dataset_train()
         self.dataset_val = self.dataset.dataset_val()
-        self.dataset_train.get({'image_id': 'ct_train_1001'})
+        self.dataset_train.get({'image_id': 'mr_train_1001'})
         self.files_to_copy = ['main.py', 'network.py', 'dataset.py']
         self.dice_names = list(map(lambda x: 'dice_{}'.format(x), range(self.num_labels)))
         self.additional_summaries_placeholders_val = dict([(name, create_summary_placeholder(name)) for name in self.dice_names])
@@ -176,5 +176,5 @@ if __name__ == '__main__':
     # cv 1, 2, 3 for cross validation
     # cv 0 for training on full training set and testing on test set
     for i in [0]:
-        loop = MainLoop('ct', i)
+        loop = MainLoop('mr', i)
         loop.run()

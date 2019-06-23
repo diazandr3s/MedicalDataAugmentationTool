@@ -7,13 +7,16 @@ If you have problems or find any bugs, don't hesitate to send me a message.
 Andres' comments:
 
 
-1. Create the .nii.gz files and put them into the TODO folder. I utilised itk software to manually transform from dicom to nii.gz extension.
-2. Rmember to change the names into something as ct_test_0000_image.nii.gzz in the folder TODO. So the script reorient.py can read them. MODIFY THIS!
+1. Create the .nii.gz files and put them into the TODO folder. I utilised itk-SNAP software to manually transform from dicom to nii.gz extension.
+2. Remember to change the names into something as ct_test_0000_image.nii.gzz in the folder TODO. So the script reorient.py can read them. I STILL NEED TO MODIFY THIS!
 3. Execute reorient.py script to create the .mha files that are used for the training
 4. Remember to modify the the ct_seg_center_rai.csv inside mmwhs_dataset/setup. Not sure how to generate the coordinates automatically.
 5. Execute main.py script
 
 
+June 23 2019
+
+1. To test images utilize the jupyter script test_CTA_MRI
 
 
 
