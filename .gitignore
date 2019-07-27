@@ -13,3 +13,5 @@ bin/experiments/semantic_segmentation/mmwhs/.ipynb_checkpoints/
 bin/experiments/semantic_segmentation/mmwhs/__pycache__/
 bin/experiments/semantic_segmentation/mmwhs/SPASM_Test_Segmentations_MRI/
 bin/experiments/semantic_segmentation/mmwhs/results/
+bin/experiments/semantic_segmentation/mmwhs/debug_train/
+bin/experiments/semantic_segmentation/mmwhs/debug_val/
