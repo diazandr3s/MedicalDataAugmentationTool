@@ -43,10 +43,11 @@ if __name__ == '__main__':
     # TODO: set to True for CT and False for MR
     is_ct = False
     # TODO: change folder to where the predictions are saved
-    input_folder = 'TODO'
+    input_folder = './results/scn_mr_0/2019-08-01_15-01-24/iter_0/'
+    #input_folder = './media1/experiments/mmwhs/scn_mr_0/2019-06-23_01-20-19/iter_40000/'
     # TODO: change folder to where original files (e.g. mr_train_1001_image.nii.gz and mr_train_1001_label.nii.gz) from MMWHS challenge are saved
-    reference_folder = 'TODO' if is_ct else 'TODO'
-
+    #reference_folder = 'TODO' if is_ct else 'TODO_mr'
+    reference_folder = './Josh_images/single_pass/'
     output_folder = './reoriented/ct/' if is_ct else './reoriented/mr/'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from collections import OrderedDict
 import numpy as np
 import utils.io.image
@@ -13,16 +11,17 @@ from utils.segmentation.segmentation_test import SegmentationTest
 from utils.segmentation.segmentation_statistics import SegmentationStatistics
 from utils.segmentation.metrics import DiceMetric
 from dataset import Dataset
-from network import network_scn, network_unet
+from network import network_scn
 from tensorflow_train.utils.summary_handler import SummaryHandler, create_summary_placeholder
 
 
-class MainLoop(MainLoopBase):
-    def __init__(self, modality, cv):
+class MainLoop(MainLoopBase): 
+    def __init__(self, modality, cv, path_weights):
         super().__init__()
         self.modality = modality
         self.cv = cv
         self.batch_size = 1
+        self.load_model_filename = path_weights
         self.learning_rates = [0.00001, 0.000001]
         self.learning_rate_boundaries = [20000]
         self.max_iter = 40000
@@ -35,11 +34,12 @@ class MainLoop(MainLoopBase):
         self.num_labels = 8
         self.data_format = 'channels_first'
         self.channel_axis = 1
-        self.save_debug_images = False
+        self.save_debug_images = True
 
-        self.has_validation_groundtruth = cv != 0
+        self.has_validation_groundtruth = False
         self.base_folder = 'mmwhs_dataset'
         self.image_size = [64, 64, 64]
+        
         if modality == 'ct':
             self.image_spacing = [3, 3, 3]
         else:
@@ -47,7 +47,7 @@ class MainLoop(MainLoopBase):
         self.input_gaussian_sigma = 1.0
         self.label_gaussian_sigma = 1.0
 
-        self.output_folder = 'media1/experiments/mmwhs/scn_' + modality + '_' + str(cv) + '/' + self.output_folder_timestamp()
+        self.output_folder = 'results/scn_' + modality + '_' + str(cv) + '/' + self.output_folder_timestamp()
 
         self.dataset = Dataset(self.image_size,
                                self.image_spacing,
@@ -61,12 +61,11 @@ class MainLoop(MainLoopBase):
 
         self.dataset_train = self.dataset.dataset_train()
         self.dataset_val = self.dataset.dataset_val()
-        self.dataset_train.get({'image_id': 'mr_train_1001'})
         self.files_to_copy = ['main.py', 'network.py', 'dataset.py']
         self.dice_names = list(map(lambda x: 'dice_{}'.format(x), range(self.num_labels)))
         self.additional_summaries_placeholders_val = dict([(name, create_summary_placeholder(name)) for name in self.dice_names])
         self.loss_function = softmax_cross_entropy_with_logits
-        self.network = network_scn  # network_unet
+        self.network = network_scn
 
     def initNetworks(self):
         network_image_size = self.image_size
@@ -172,9 +171,13 @@ class MainLoop(MainLoopBase):
             self.val_loss_aggregator.finalize(self.current_iter, summary_values=dice_dict)
 
 
-if __name__ == '__main__':
-    # cv 1, 2, 3 for cross validation
-    # cv 0 for training on full training set and testing on test set
-    for i in [0]:
-        loop = MainLoop('mr', i)
-        loop.run()
+# For MRI images:
+path_weights = './media1/experiments/mmwhs/scn_mr_0/2019-06-23_01-20-19/weights/model-40000'
+
+# For CTA images:
+#path_weights = './media1/experiments/mmwhs/scn_ct_0/2019-06-21_17-19-44/weights/model-40000'
+
+object_mainLoop = MainLoop('mr', 0, path_weights)
+object_mainLoop.run_test()
+
+
