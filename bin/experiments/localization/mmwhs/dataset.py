@@ -236,4 +236,3 @@ class Dataset(object):
                             transformations=[reference_transformation],
                             iterator=iterator,
                             debug_image_folder='debug_val' if self.save_debug_images else None)
-

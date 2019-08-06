@@ -148,7 +148,6 @@ class MainLoop(MainLoopBase):
 
 if __name__ == '__main__':
     for modality in ['ct']:
-        for cv in [1, 2, 3]:
+        for cv in [1]:
             loop = MainLoop(cv, modality)
             loop.run()
-

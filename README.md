@@ -18,6 +18,21 @@ June 23 2019
 
 1. To test images utilize the jupyter script test_CTA_MRI
 
+August 5, 2019
+
+Tensorflow: 
+
+To install tensorflow version 1.13.1, I got problems for the version of Nvidia drivers. So, I used CUDA Toolkit 10.0 Archive (https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=CentOS&target_version=7&target_type=rpmlocal).
+
+I install the tenxorflow preented in this links: https://github.com/tensorflow/tensorflow/issues/26182 -  https://github.com/mind/wheels/releases
+
+But before, I did this:
+
+pip uninstall tensorflow protobuf --yes
+find $CONDA_PREFIX -name "tensorflow" | xargs -Ipkg rm -rfv pkg
+pip install --ignore-installed --upgrade https://github.com/mind/wheels/releases/download/tf1.13-gpu-cuda10-tensorrt/tensorflow-1.13.1-cp36-cp36m-linux_x86_64.whl --no-cache-dir
+
+Solved!!!
 
 
 ## Citation

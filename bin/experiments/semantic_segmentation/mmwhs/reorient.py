@@ -26,14 +26,14 @@ def relabel(labels):
 
 if __name__ == '__main__':
     # TODO: set to True for CT and False for MR
-    is_ct = False
+    is_ct = True
     # TODO: change input folder
-    input_folder = './Josh_images/single_pass/'
+    input_folder = './TODO/'
     output_folder = './mmwhs_dataset/ct_mha/' if is_ct else './mmwhs_dataset/mr_mha/'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
-    #filenames = glob(input_folder + '*image.nii.gz')
-    filenames = glob(input_folder + 'p*')
+    filenames = glob(input_folder + '*image.nii.gz')
+    #filenames = glob(input_folder + 'p*')
     print(filenames)
     for filename in sorted(filenames):
         basename = os.path.basename(filename)

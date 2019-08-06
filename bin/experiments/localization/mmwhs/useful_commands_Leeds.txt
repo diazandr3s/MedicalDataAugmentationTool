@@ -1,0 +1,162 @@
+
+Create and remove virtual enviorenments:
+
+conda create -n nameEnv anaconda  --> Apparently it creates an env based on one already created
+source activate nameEnv
+
+Remove:
+
+conda env remove --name ENVIRONMENT
+
+
+Some Git commands:
+
+git clone urlRepository
+git clone -b <branch> <remote_repo>
+
+
+Jupyter:
+
+jupyter notebook --no-browser --port=8888
+
+To use Jupyter off-campus (ssh to map port 8888 to your local computer): 
+
+ssh -L 8888:localhost:8888 -J scsad@remote-access.leeds.ac.uk scsad@comp-pc-200422
+
+Standard ssh off-campus:
+
+ssh -X scsad@remote-access.leeds.ac.uk
+and then to the computer:
+ssh -Y scsad@comp-pc-200422  --> GPU workstation
+ssh -Y scsad@comp-pc-200465  --> My PC
+ssh scsad@arc2.leeds.ac.uk   --> ARC. 
+
+
+Show images:
+
+display imageName
+
+
+s3cmd:
+
+Install
+conda install -c binstar s3cmd or conda install -c conda-forge s3cmd
+s3cmd --configure  --> Put access key and the other key
+s3cmd sync s3://users-andres-diaz-pinto/ct_train_test.rar ./  --> To download file
+s3cmd ls                    --> List all buckets
+s3cmd put addressbook.xml s3://logix.cz-test/addrbook.xml  --> Load file into bucket
+
+
+
+Unzip many files in folder:
+
+for f in *.gz; do
+  STEM=$(basename "${f}" .gz)
+  gunzip -c "${f}" > ./"${STEM}"
+done
+
+
+Move files:
+
+for f in *.gz; do
+  mv "${f}" ../CT_compress/
+done
+
+
+Unrar:
+
+1. wget http://www.rarlab.com/rar/rarlinux-x64-5.3.b4.tar.gz
+2. tar -zxvf rarlinux-*.tar.gz
+3. Go to rar folder
+4 ./unrar
+
+
+Singularity:
+
+singularity build imageName.simg shub://marc_hpc/anaconda-cuda:latest
+singularity build lolcow.simg docker://godlovedc/lolcow
+
+I cannot create images from recipe without sudo rights
+Learn more about image creation and edition!
+
+
+
+
+Tensorflow: 
+
+To install tensorflow version 1.13.1, I got problems for the version of Nvidia drivers. So, I used CUDA Toolkit 10.0 Archive (https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=CentOS&target_version=7&target_type=rpmlocal).
+
+I install the tenxorflow preented in this links: https://github.com/tensorflow/tensorflow/issues/26182 -  https://github.com/mind/wheels/releases
+
+But before, I did this:
+
+pip uninstall tensorflow protobuf --yes
+find $CONDA_PREFIX -name "tensorflow" | xargs -Ipkg rm -rfv pkg
+pip install --ignore-installed --upgrade https://github.com/mind/wheels/releases/download/tf1.13-gpu-cuda10-tensorrt/tensorflow-1.13.1-cp36-cp36m-linux_x86_64.whl --no-cache-dir
+
+Solved!!!
+
+
+-------------------------------------------------------------------------
+
+For CFUN method:
+
+TRAIN_ROIS_PER_IMAGE = 5 # 15  # 200 -- Andres!!
+
+
+database.json
+
+{
+"weights":{},
+"data":"/home/csunix/scsad/DL/CT_data/",
+"stage":{},
+"limit":{},
+"logs":"logs/",
+"bbox":{},
+"train_and_test":[
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1020_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1020_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1019_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1019_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1018_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1018_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1017_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1017_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1016_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1016_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1015_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1015_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1014_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1014_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1013_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1013_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1012_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1012_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1011_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1011_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1010_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1010_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1009_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1009_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1008_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1008_label.nii"},
+
+                   {"image":"/home/csunix/scsad/DL/CT_data/ct_train_1007_image.nii",
+                    "label":"/home/csunix/scsad/DL/CT_data/ct_train_1007_label.nii"}
+]
+}
+
+
+
