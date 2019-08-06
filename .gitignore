@@ -17,3 +17,5 @@ bin/experiments/semantic_segmentation/mmwhs/debug_train/
 bin/experiments/semantic_segmentation/mmwhs/debug_val/
 bin/experiments/semantic_segmentation/mmwhs/Josh_images/
 bin/experiments/semantic_segmentation/mmwhs/CT_sample/
+bin/experiments/localization/mmwhs/mmwhs_localization/
+bin/experiments/localization/mmwhs/__pycache__/
